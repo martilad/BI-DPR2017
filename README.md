@@ -50,11 +50,11 @@ Předmět BI-DPR Dokumentace, prezentace a rétorika je zakončen klasifikovaný
 	* Interní vedoucí - udělí body přímo do hodnocení v kurzu BI-DPR v systému Moodle ČVUT
 	* Externí vedoucí - stáhne si formulář "Potvrzení od externího vedoucího závěrečné práce pro udělení zápočtu", formulář vyplní, vytiskne, podepíše a přímo či prostřednictvím studenta doručí vyučujícímu předmětu BI-DPR nebo na sekretariát Katedry softwarového inženýrství (Mgr. Libánská, A-926)
 	* V případě nutnosti lze předmět BI-DPR absolvovat i bez udělených bodů od vedoucího bakalářské práce
-| Kategorie   |      Bližší charakteristika      |  Body |
-|----------|:-------------:|------:|
-| konzultace s vedoucím práce, připravenost, adekvátnost |  navštěvuje dohodnuté konzultace / v případě principiálních nejasností či potřeby důležitých rozhodnutí aktivně konzultace vyhledává / na konzultace je připraven | 0 - 4 |
-| dodržování termínů |    plní včas a kvalitně zadané dílčí úkoly (dílčí úkoly jakož i četnost konzultací nejsou předepsány a závisí na povaze práce a dohodě mezi studentem a vedoucím BP; ze zkušeností vřele doporučujeme udržet se s vedoucím práce v kontaktu alespoň jednou týdně, byť by mělo jít jen o informaci o postupu poslanou e-mailem nebo krátkou komunikaci přes skype či telefon)   |   0 - 4 |
-| schopnost samostatné práce | pracuje samostatně / je schopen samostatně řešit dílčí úkoly / zdůvodnění provedených rozhodnutí |    0 - 4 |
-| rozpracovatnost teoretické části práce | nakolik má student rozpracovanou teoretickou (rešeršní, analytickou) část BP (typicky to mohou být přípravné a rešeršní práce, průzkum existujících řešení, prozkoumání teoretického zázemí, provedení potřebné analýzy, apod.) |    0 - 4 |
-| rozpracovanost praktické části práce | nakolik má student rozpracovanou praktickou část BP (typicky to může být vlastní návrh řešení, jeho implementace a otestování, zhodnocení výsledků, porovnání s již existujícími řešením, zdokumentování, apod.) |    0 - 4 |
+| Kategorie   |      Bližší charakteristika      |  Body 
+|----------|---------------------|------
+| konzultace s vedoucím práce, připravenost, adekvátnost |  navštěvuje dohodnuté konzultace / v případě principiálních nejasností či potřeby důležitých rozhodnutí aktivně konzultace vyhledává / na konzultace je připraven | 0 - 4 
+| dodržování termínů |    plní včas a kvalitně zadané dílčí úkoly (dílčí úkoly jakož i četnost konzultací nejsou předepsány a závisí na povaze práce a dohodě mezi studentem a vedoucím BP; ze zkušeností vřele doporučujeme udržet se s vedoucím práce v kontaktu alespoň jednou týdně, byť by mělo jít jen o informaci o postupu poslanou e-mailem nebo krátkou komunikaci přes skype či telefon)   |   0 - 4 
+| schopnost samostatné práce | pracuje samostatně / je schopen samostatně řešit dílčí úkoly / zdůvodnění provedených rozhodnutí |    0 - 4 
+| rozpracovatnost teoretické části práce | nakolik má student rozpracovanou teoretickou (rešeršní, analytickou) část BP (typicky to mohou být přípravné a rešeršní práce, průzkum existujících řešení, prozkoumání teoretického zázemí, provedení potřebné analýzy, apod.) |    0 - 4 
+| rozpracovanost praktické části práce | nakolik má student rozpracovanou praktickou část BP (typicky to může být vlastní návrh řešení, jeho implementace a otestování, zhodnocení výsledků, porovnání s již existujícími řešením, zdokumentování, apod.) |    0 - 4 
 
