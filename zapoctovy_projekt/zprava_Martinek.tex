@@ -1,6 +1,8 @@
 \documentclass[11pt]{article}
-\usepackage[a4paper,left=21mm,right=21mm,top=23mm,bottom=25mm]{geometry}
+\usepackage[a4paper,left=22mm,right=22mm,top=23mm,bottom=25mm]{geometry}
 \usepackage{graphicx}
+\usepackage{url}
+\usepackage{fancyhdr}
 \usepackage[czech]{babel}
 \usepackage[utf8]{inputenc}
 
@@ -40,13 +42,13 @@ V~dnešní moderní společnosti, kde neustále roste objem dat nabízený na in
 je pro uživatele velmi těžké vyhledávat informace nebo produkty. Proto
 se společnosti zabývají přizpůsobováním obsahu každému uživateli na internetu
 např. doporučením, co by se uživateli mohlo líbit. Při doporučovaní se
-snaží nabídnout např. film, článek, který by mohl uživatele zajímat. Doporučování
+snaží nabídnout např. film nebo článek, který by mohl uživatele zajímat. Doporučování
 na internetu je nutné provádět v reálném čase, což se současnými
 objemy dat je velice problémové. Z~tohoto důvodu je výhodné,
 zároveň i~nutné se zabývat zrychlováním doporučovacích systému.
 
 Existuje mnoho metod, které se zrychlováním zabývají. V~práci se věnuji
-jedné konkrétní metodě a~to lokálně senzitivnímu hashování, pomocí kterého lze dosahovat několikanásobného zrychlení výpočtu při malé ztrátě přesnosti. Výstup mé práce by mel pomoci programátorům s~testováním a~vyhodnocováním různých parametrizací použité metody pro zrychlení vyhodnocování doporučovacích systémů.
+jedné konkrétní metodě a~to lokálně senzitivnímu hashování, pomocí kterého lze dosahovat několikanásobného zrychlení výpočtu při malé ztrátě přesnosti. Výstup mé práce by měl pomoci programátorům s~testováním a~vyhodnocováním různých parametrizací použité metody pro zrychlení vyhodnocování doporučovacích systémů.
 
 Téma jsem si zvolil, neboť doporučovací systémy jsou využívány mnoha
 společnostmi na internetových stránkách, kde nám jejich přítomnost usnadňuje
@@ -54,64 +56,78 @@ hledání informací. Nicméně je velmi výpočetně náročné vyhodnocovat
 všechna nasbíraná data v~reálném čase, proto se v~práci zabývám aproximací doporučovacích systémů, konkrétně pak návrhem, implementací a~následným vyhodnocením knihovny na aproximaci hledání nejbližších sousedu.
 
 \section{Cíl práce}
-Cílem rešeršní části práce je získat přehled o doporučovacích systémech, seznámit
-se s algoritmy nejbližších sousedu a nastudovat algoritmy lokálně senzitivního
-hashování a možnosti využití těchto metod při aproximaci algoritmu
-nejbližších sousedu. Dalším navazující cíl rešeršní části je představení metod
-vyhodnocování úspěšnosti představených algoritmů a doporučovacích systému
-založených na těchto algoritmech.
+Cílem rešeršní části práce je získat přehled o~doporučovacích systémech, seznámit se s~algoritmy nejbližších sousedu a~nastudovat algoritmy lokálně senzitivního hashování a~možnosti využití těchto metod při aproximaci algoritmu nejbližších sousedu. Dalším navazující cíl rešeršní části je představení metod vyhodnocování úspěšnosti představených algoritmů a~doporučovacích systému založených na těchto algoritmech.
 
 Cílem praktické části práce je navrhnout způsob aplikace metod lokálně
 senzitivního hashování za účelem aproximace algoritmu hledání nejbližších
-sousedu, poté návrh a implementace frameworku pro testování úspěšnosti
-algoritmu lokálně senzitivního hashování v doporučovacích systémech. V neposlední řadě je cílem otestování implementace algoritmu s různou parametrizací na dvou datových sadách a diskuze výsledku, konkrétně poměr zrychlení výpočtu na úkor zhoršení přesnosti.
+sousedu, poté návrh a~implementace frameworku pro testování úspěšnosti
+algoritmu lokálně senzitivního hashování v~doporučovacích systémech. V~neposlední řadě je cílem otestování implementace algoritmu s~různou parametrizací na dvou datových sadách a~diskuze výsledků, konkrétně poměr zrychlení výpočtu na úkor zhoršení přesnosti.
 
 \section{Analýza}
-Nejprve stručně vymezím pojmy a podle literatury popíši přístupy, kterým se v práci věnuji. Na to naváži analýzou současného stavu řešení aktuální problematiky.
+Nejprve stručně vymezím pojmy a~podle literatury popíši přístupy, kterým se v~práci věnuji. Na to naváži analýzou současného stavu řešení aktuální problematiky.
 
 \subsection{Základní pojmy}
-Doporučovací systémy jsou nástroje a techniky, které generují doporučení položek, které by mohly být zajímavé nebo užitečné pro uživatele [1, pg.1]. Doporučením mohou být například produkty k prodeji, filmy nebo i slevové kupóny od obchodních řetězců.
+Doporučovací systémy jsou nástroje a~techniky, které generují doporučení položek, které by mohly být zajímavé nebo užitečné pro uživatele~\cite[pg.1]{RECHAndBook}. Doporučením mohou být například produkty k~prodeji, filmy nebo i~slevové kupóny od obchodních řetězců.
 
-Základním přístupem v doporučovacích systémech je filtrování obsahu a informací pomocí spolupráce mezi více uživateli (Kolaborativní filtování, angl. Collaborative filtering). V mé práci se budu věnovat filtrování pomocí spolupráce uživatelů. Klíčovou myšlenkou je, že pokud uživatelé sdílejí zájem o určité položky, budou tento zájem sdílet i nadále a budou preferovat podobné položky [4].
+Základním přístupem v doporučovacích systémech je filtrování obsahu a~informací pomocí spolupráce mezi více uživateli (Kolaborativní filtování, angl. Collaborative filtering). V~mé práci se budu věnovat filtrování pomocí spolupráce uživatelů. Klíčovou myšlenkou je, že pokud uživatelé sdílejí zájem o~určité položky, budou tento zájem sdílet i~nadále a~budou preferovat podobné položky~\cite{xue2005scalable}.
 
-Algoritmy nejbližších sousedů (angl. k-nearest neighbors, k-NN) jsou přístupem kolaborativního filtrování a vždy fungují v konkrétním měřitelném prostoru, který muže být definován různými způsoby. Existence metriky je důležitá pro porovnávání podobnosti nebo vzdálenosti jednotlivých sousedů.
+Algoritmy nejbližších sousedů (angl. k-nearest neighbors, k-NN) jsou přístupem kolaborativního filtrování a~vždy fungují v konkrétním měřitelném prostoru, který muže být definován různými způsoby. Existence metriky je důležitá pro porovnávání podobnosti nebo vzdálenosti jednotlivých sousedů.
 
-Lokálně senzitivní hashování (angl. Locality sensitive hashing, LSH) je metoda aproximace algoritmu k-NN. Podobně jako i jiné aproximační metody je LSH randomizované a náhodnost je typicky využita ke konstrukci datové struktury pro vytvoření modelu [13].
+Lokálně senzitivní hashování (angl. Locality sensitive hashing, LSH) je metoda aproximace algoritmu k-NN. Podobně jako i~jiné aproximační metody je LSH randomizované a náhodnost je typicky využita ke konstrukci datové struktury pro vytvoření modelu~\cite{shakhnarovich2006nearest}.
+
+Základním principem LSH je rozdělení vícerozměrného prostoru na části nazývané
+jako kbelíky (angl. buckets). Hashovací funkce LSH transformuje mnoha dimenzionální vektory na sekvence bitů. Odlišností proti klasickým hashovacím funkcím jako jsou SHA a MD5, které se snaží kolizím co nejvíce zabránit, se hashovací přístup v~LSH snaží maximalizovat pravděpodobnost kolize blízkých položek~\cite{wang2014hashing}.
 \subsection{Současný stav}
+Metody LSH jsou různě definované pro různé metriky podobnosti a~vzdáleností v~prostoru. V~práci se věnuji pouze metrice kosinové podobnosti. Podle~\cite{argerich2017generic} platí, že každá hashovací funkce $h(\mathbf{x}) \to \langle0 \dots m ) $ převede $d$~dimenzionální vektor $\mathbf{x}$~na číslo bucketu, které je mezi $0$~až $m-1$. Hashovací funkce musí být rychlá na výpočet, jednoduše rozšiřitelná a~také pravděpodobnost kolize musí odpovídat kosinové podobnosti.
 
-Co se řešilo\dots 
+V~publikaci~\cite{argerich2017generic} představují hashovací funkce jako matice, pomocí kterých jsou jednotlivé vektory položek všech uživatelů hashovány do příslušných bucketů. Hashovací matice jsou gererovány z~uniformního nebo normálního rozdělení náhodně. Nevýhodou takového řešení může být, že ne vždy může být potencionálně podobný uživatel zahashován do stejného bucketu. Problém je řešen přidáváním více a~více hashovacích funkcí. 
+
+Přidávání hashovacích funkcí má ovšem svoje hranice, protože je nutné výsledky z jednotlivých funkcí agregovat. Řešení problému je navrženo v~publikaci~\cite{lv2007multi}. V~publikaci je popsána metoda, kdy jsou procházeny kromě jednoho výsledného bucketu také podobné buckety. Při hashování se může stát, že se reprezentace bucketu bude lišit v~jednom bitu. Proto při vyhodnocování dotazů jsou procházeny také blízké buckety, které jsou určeny svojí hammingovou vzdáleností, tedy počtu odlišných bitů v~reprezentaci bucketu. 
+
+Cílem této metody může být snížení paměťové náročnosti oproti použití velkého množství hashovacích funkcí nebo také dosahování vetší přesnosti při aproximaci, kdy už není efektivní přidávat další hashovací funkce.
+
+Poslední testovaný přístup LSH je založen na myšlence popsané v~článku~\cite{Steck:2011:IPR:2043932.2043957}. V~každé reálné datové sadě jsou položky, které jsou u~uživatelů více oblíbené než jiné. Tuto podobnost lze zjistit z~nasbíraných dat. Základní představa je, že je mnohem více pravděpodobnější, že uživatel kladně zareaguje na populární položku než na nepopulární. V~\cite{Steck:2011:IPR:2043932.2043957} je popularita položky brána jako počet relevantních hodnocení uživatelů dané položky. 
+
+Těchto hodnot popularity lze využít k~úpravě projekční matice. Upravená projekční matice poté dává větší váhu na jednotlivé populární položky, proto jsou uživatele sdílející tyto položky hashováni do stejných bucketů.
+
+Přístupy v~jednotlivých publikacích jsou také testovány většinou jednorázově a~pouze na datech, které jsou generovány uměle. Z~tohoto důvodu jsem implementoval knihovnu, která umožní testovat různé parametrizace metod LSH na reálných datech.
+
 \section{Realizace}
-Jak řeším\dots
+Pro realizaci jsem zvolil programovací jazyk Python, protože je dobře použitelný pro efektivní implementaci testovacích modulů. V rámci práce jsem vytvořil testovací framework, který se skladá z~několika základních modulů. Pomocí frameworku lze testovat různé parametrizace metod LSH. 
+
+Framework se skládá z následujících částí. Základem jsou testovací scripty, ve kterých jsou systematicky provedeny testy zvolených parametrizací a~metod LSH. Ve frameworku se nacházejí dva hlavní testovací skripty, které sdílejí ostatní moduly ve frameworku. Různé nezávislé skripty jsem zvolil z~důvodu odlišnosti testování přesnosti algoritmu k-NN a~přesnosti doporučování na základě algoritmu k-NN. 
+
+Každý ze způsobů je nutné otestovat odlišným způsobem, přičemž první jmenovaný je výpočetně méně náročný, protože při testování je každý uživatel jedním modelem testován právě jednou. Testování přesnosti k-NN je testováno na 10~nejbližších sousedů, avšak ve frameworku lze tuto hodnotu specifikovat v~argumentu. Toto testování je vždy prováděno zároveň s referenčním řešením vůči kterému je testována úspěšnost. 
+
+Při testování úspěšnosti doporučování je každý uživatel testován $n$-krát pomocí leave-one-out křížové validace, kde $n$~je nastaveno na hodnotu 20, ale také je možné tuto hodnotu specifikovat na jinou hodnotu. Doporučování je testováno na 5~doporučených položek (lze specifikovat hodnotu v~argumentu) a~následně je kontrolováno zdali se vynechaná položka nachází v~doporučených 5~položkách. Z~toho plyne, že při tomto testování není bezpodmínečně nutné počítat i~referenční řešení, ale je to velice výhodné pro porovnání úspěšnosti, protože testování může být závislé na velikosti a~volbě testovací množiny.
+
+Prvním sdíleným modulem ve frameworku je modul předzpracování, který obstarává stažení offline dat z~databáze. Je možné jej nahradit za modul, který umožní stahování z~jiných datových struktur. V~části předzpracování probíhá dále zpracování dat z~databáze pro rychlé vyhodnocování modelu k-NN a~LSH. V~práci používám modul pro PostgreSQL databázi, ze které stahuji data. Modul pouze stahuje data na základe SQL příkazu. V~konfiguračním souboru je specifikována konkrétní databáze s~přístupovými údaji do ní. Data jsou získávána z~jednotlivý tabulek jako seznam n-tic (uživatel, položka, hodnocení, časová známka). Hodnocení muže kromě samotného uživatelského hodnocení obsahovat také váhu ohodnocení určité interakce uživatele s~položkou.
+
+Dalším důležitým modulem ve frameworku je modul k-NN. Modul slouží pro vytvoření modelu k-NN a~vyhodnocování dotazu na $k$~nejbližších sousedu. Tento modul jsem do systému navrhl zejména z~důvodu nutnosti referenčního modelu pro porovnávání a~hodnocení metod LSH.
+
+Metody LSH představují vlastní důležitý modul. Model slouží k~rozdělení
+prostoru pomocí lokálně senzitivních hashovacích funkcí. Modul aproximuje dotaz na $k$~nejbližších sousedu. Skládá se z~dvou částí, první je vyhodnocení $k$~nejbližších sousedu na principu k-NN a~druhý představuje model hashovacích funkcí, která vrací množinu potencionálních uživatelů.
+
+Poslední dva moduly jsou pomocné. Jeden slouží k~zápisu dat. Data jsou do třídy posílána jako slovníky klíč–hodnota. V~modulu je implementováno řazení dat a~zápis do konkrétního formátu výstupu pro tvorbu grafu. Pro práci jsem zvolil formát csv představující zápis tabulky v~souboru, kde jsou hodnoty oddělené čárkami. Druhý modul je nezávislý a~usnadňuje tvorbu grafů z~datových souborů pro přehlednou prezentaci výsledků.
+
 \section{Závěr}
-Cílem práce byl návrh a implementace knihovny pro testování metod lokálně senzitivního hashování, úspěšnosti těchto metod a jejich různých parametrizací.
+Cílem práce byl návrh a~implementace knihovny pro testování metod lokálně senzitivního hashování, úspěšnosti těchto metod a~jejich různých parametrizací.
 	
-	Knihovna implementována v rámci práce umožňuje testovat různé parametrizace a modely LSH na různých databázích, které lze specifikovat v konfiguračním souboru. Z výsledných dat generovaných frameworkem je možné pomocí nezávislého modulu generovat grafy pro lepší prezentaci výsledků.
+	Knihovna implementována v~rámci práce umožňuje testovat různé parametrizace a~modely LSH na různých databázích, které lze specifikovat v~konfiguračním souboru. Z~výsledných dat generovaných frameworkem je možné pomocí nezávislého modulu generovat grafy pro lepší prezentaci výsledků.
 	
-	Dosažené výsledky při testování různých parametrizací jsou velice uspokojivé. Na dvou otestovaných datových sadách bylo zjištěno, že lze dosahovat času kolem 5 \%. Úspěšnost doporučování se při této aproximaci pohybuje okolo 97 - 99 \%. Při této úspěšnosti dosahují modely LSH přibližně o 20 \% lepší catalog coverage vzhledem k referenčnímu modelu. Doporučovací systém s metodami LSH tedy doporučuje větší množství různých položek, proto mohou být metody LSH užitečnější tím, že kromě časového zrychlení, mohou doporučovat větší část položek z databáze.
+	Dosažené výsledky při testování různých parametrizací jsou velice uspokojivé. Na dvou otestovaných datových sadách bylo zjištěno, že lze dosahovat času kolem 5~\%. Úspěšnost doporučování se při této aproximaci pohybuje okolo 97~-~99~\%. Při této úspěšnosti dosahují modely LSH přibližně o~20~\% lepší catalog coverage vzhledem k~referenčnímu modelu. Doporučovací systém s~metodami LSH tedy doporučuje větší množství různých položek, proto mohou být metody LSH užitečnější tím, že kromě časového zrychlení, mohou doporučovat větší část položek z databáze.
 	
-	Zajímavým poznatkem je zjištěná závislost mezi přesností na 10 nejbližších sousedů a úspěšnosti doporučování. Díky tomuto zjištění bylo možné otestovat velké množství různých parametrizací, protože testování přesnosti na 10 nejbližších sousedů je efektivnější. Testováním byli zjištěny některé hranice nastavení jednotlivých modelů a také nastavení pomocí kterého lze dosahovat optimálních výsledků.
+	Zajímavým poznatkem je zjištěná závislost mezi přesností na 10~nejbližších sousedů a~úspěšnosti doporučování. Díky tomuto zjištění bylo možné otestovat velké množství různých parametrizací, protože testování přesnosti na 10~nejbližších sousedů je efektivnější. Testováním byli zjištěny některé hranice nastavení jednotlivých modelů a~také nastavení pomocí kterého lze dosahovat optimálních výsledků.
 	
-	V neposlední řadě je zajímavý poznatek nastavení parametrů testu pro testování metod LSH pomocí frameworku. Pro každou databázi je nutné zvolit požadované parametry při testování z ohledem na velikost databáze. Tyto parametry lze podle počtu uživatelů lehce dopočítávat a tím přizpůsobit testování pro konkrétní databázi.
+	V~neposlední řadě je zajímavý poznatek nastavení parametrů testu pro testování metod LSH pomocí frameworku. Pro každou databázi je nutné zvolit požadované parametry při testování z~ohledem na velikost databáze. Tyto parametry lze podle počtu uživatelů lehce dopočítávat a~tím přizpůsobit testování pro konkrétní databázi.
 	
-	V budoucnu by mohli tyto metody implementované jako součást doporučovacího systému, kde by bylo nutné se zabývat jejich paralelizací. Metody LSH lze velice efektivně paralelizovat obdobně jako samotný algoritmus k-NN. V budoucí práci by bylo také určitě nutné omezit maximální počet uživatelů v jednom bucketu.
+	V~budoucnu by mohli tyto metody implementované jako součást doporučovacího systému, kde by bylo nutné se zabývat jejich paralelizací. Metody LSH lze velice efektivně paralelizovat obdobně jako samotný algoritmus k-NN. V budoucí práci by bylo také určitě nutné omezit maximální počet uživatelů v~jednom bucketu.
 
-Při využití v online doporučovacím systému by bylo nutné se zabývat automatizací nastavení modelu, tedy zvoleným množstvím hashovacích funkcí, množství bucketů a velikost okolí procházených bucketů. Zároveň na online datech není znám předem přesný objem dat ani počet uživatelů, proto by bylo zajímavé navrhnout způsob, kterým by bylo možné přizpůsobovat model při online běhu (např. přehashováním, přidávání nebo odebírání hashovacích funkcí). 
+Při využití v~online doporučovacím systému by bylo nutné se zabývat automatizací nastavení modelu, tedy zvoleným množstvím hashovacích funkcí, množství bucketů a~velikost okolí procházených bucketů. Zároveň na online datech není znám předem přesný objem dat ani počet uživatelů, proto by bylo zajímavé navrhnout způsob, kterým by bylo možné přizpůsobovat model při online běhu (např. přehashováním, přidávání nebo odebírání hashovacích funkcí). 
 	
-\section{Poznámky}
-
-  \begin{enumerate}
-\item Úvodní strana - název, jméno autora, jméno vedoucího práce, ročník a obor studia, případně logo fakulty
-\item Klíčová slova - cca 5 až 10 odborných termínů charakterizujících zaměření bakalářské práce
-\item Úvod 
-\item Definice cíle(ů) bakalářské práce
-\item Analýza současného stavu řešení problému - kdo a jakým způsobem již problém řešil, k čemu došel, výhody a nevýhody řešní
-\item Aktuální stav řešení - řešení, které student zvolil
-\item Závěr - míra splnění cíle(ů)
-\item Seznam literárních zdrojů dle ČSN ISO 690
-  \end{enumerate}
  
-test\cite{guide}
 \clearpage
+\thispagestyle{empty}
 \bibliographystyle{csn690}
 \bibliography{zdroj}
 \end{document}
