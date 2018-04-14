@@ -15,14 +15,14 @@ Předmět BI-DPR Dokumentace, prezentace a rétorika je zakončen klasifikovaný
 	* Odevzdání ve formátu PDF
 	* Velikost souboru maximálně 10 MB
 	* Projekt student odevzdává v elektronické formě prostřednictvím kurzu BI-DPR systému Moodle ČVUT
-	1. Úvodní strana - název, jméno autora, jméno vedoucího práce, ročník a obor studia, případně logo fakulty
-	2. Klíčová slova - cca 5 až 10 odborných termínů charakterizujících zaměření bakalářské práce
-	3. Úvod 
-	4. Definice cíle(ů) bakalářské práce
-	5. Analýza současného stavu řešení problému - kdo a jakým způsobem již problém řešil, k čemu došel, výhody a nevýhody řešní
-	6. Aktuální stav řešení - řešení, které student zvolil
-	7. Závěr - míra splnění cíle(ů)
-	8. Seznam literárních zdrojů dle ČSN ISO 690
+		1. Úvodní strana - název, jméno autora, jméno vedoucího práce, ročník a obor studia, případně logo fakulty
+		2. Klíčová slova - cca 5 až 10 odborných termínů charakterizujících zaměření bakalářské práce
+		3. Úvod 
+		4. Definice cíle(ů) bakalářské práce
+		5. Analýza současného stavu řešení problému - kdo a jakým způsobem již problém řešil, k čemu došel, výhody a nevýhody řešní
+		6. Aktuální stav řešení - řešení, které student zvolil
+		7. Závěr - míra splnění cíle(ů)
+		8. Seznam literárních zdrojů dle ČSN ISO 690
 2. **Zápočtová prezentace - prezentace poziční zprávy o bakalářské práci**
 Prezentace současného stavu řešení bakalářské práce - cíle(ů) vytýčeného(ých) v bakalářské práci 
 Délka trvání prezentace cca 7 minut (jako délka trvání prezentace bakalářské práce u SBZ)
