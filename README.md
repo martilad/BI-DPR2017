@@ -50,6 +50,8 @@ Předmět BI-DPR Dokumentace, prezentace a rétorika je zakončen klasifikovaný
 	* Interní vedoucí - udělí body přímo do hodnocení v kurzu BI-DPR v systému Moodle ČVUT
 	* Externí vedoucí - stáhne si formulář "Potvrzení od externího vedoucího závěrečné práce pro udělení zápočtu", formulář vyplní, vytiskne, podepíše a přímo či prostřednictvím studenta doručí vyučujícímu předmětu BI-DPR nebo na sekretariát Katedry softwarového inženýrství (Mgr. Libánská, A-926)
 	* V případě nutnosti lze předmět BI-DPR absolvovat i bez udělených bodů od vedoucího bakalářské práce
+	
+
 | Kategorie   |      Bližší charakteristika      |  Body 
 |----------|---------------------|------
 | konzultace s vedoucím práce, připravenost, adekvátnost |  navštěvuje dohodnuté konzultace / v případě principiálních nejasností či potřeby důležitých rozhodnutí aktivně konzultace vyhledává / na konzultace je připraven | 0 - 4 
