@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{polyglossia}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\setmainlanguage{czech}
+\usepackage{xevlna} % nezalomitelně mezery nefnguje 
+\usepackage{enumitem}
+\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+\begin{document}
+
+\tableofcontents
+\section{Členění textu}
+	\subsection[Kapitoly]{Kapitoly a to co tu nechci}
+	
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sodales interdum urna quis luctus. 
+	\subsection{Odstavce}
+		Lorem-ipsum--dolor---sit amet, \enquote{consectetur adipiscing} elit. Nunc sodales interdum urna quis luctus. Praesent a volutpat est. Cras rutrum dapibus luctus. Ut sodales neque sed diam egestas luctus. Nullam sit amet ipsum egestas, congue mi sed, hendrerit orci. Cras volutpat elit eu suscipit sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas\dots
+
+	Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus sed velit viverra, molestie justo sed, dictum arcu. Etiam justo nisi, hendrerit nec sagittis ac, porttitor vitae nisi. Ut fringilla eget neque sit amet varius. Aenean massa erat, pulvinar non aliquam at, ornare v augue. Nunc et ultricies mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+\section{Seznamy}
+\begin{itemize}
+\item [=>]Vertikální mezera 
+\end{itemize}
+\begin{description}
+\item[neivm] to co jsem chtěl vysvětlit
+\end{description}
+\begin{enumerate}
+\item a \ref{pic:a}
+\item jaj
+\end{enumerate}
+\section{Tabulky}
+\begin{table}\centering
+\caption{Bodování} \label{pic:a}
+\begin{tabular}{p{3cm}|r|c}
+
+činnost &body &povinná  \\ \hline \hline
+koukání na televizi & 90 & ano \\ \hline
+spaní & 10 & ano 
+
+
+\end{tabular}
+
+\end{table}
+\section{Samostatná práce}
+\subsection{hodnocení}
+\begin{table}\centering
+\caption{Bodování} \label{pic:a}
+\begin{tabular}{p{3cm}||rr|c}
+
+činnost &body &povinná  \\ \hline \hline
+koukání na televizi & 90 & ano \\ \hline
+spaní & 10 & ano 
+
+
+\end{tabular}
+
+\end{table}
+
+
+\end{document}
