@@ -5,4 +5,7 @@
 *.log
 *.run,xml
 *.synctex*
+*.nav
+*.out
+*.tos
 

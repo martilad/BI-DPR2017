@@ -5,6 +5,8 @@
 \usepackage{graphicx}
 \usetheme{Madrid}
 \usecolortheme{whale}
+\usepackage[inline]{enumitem}
+\usepackage{xcolor}
 
 \beamertemplatenavigationsymbolsempty
 \makeatletter
@@ -39,59 +41,102 @@
 
 \section{Motivace}
 \begin{frame}{Motivace}
-		něco
+		\begin{itemize}
+		\item[•] Osobní zájem v oblasti doporučovacích systémů
+		\item[•] Narůstajícího množství dat
+		\item[•] Osobní přínos
+		\end{itemize}
 \end{frame}
 
 \section{Cíle BP}
 \begin{frame}{Cíle Bakalářské práce}
-		něco
+       \begin{itemize}
+		\item[•] Analýza metod LSH 
+		\item[•] Návrh aplikace metod do algoritmu k-NN 
+		\item[•] Návrh a implementace testovací knihovny
+		\item[•] Testování různých parametrizací LSH
+		\item[•] Diskuze výsledků
+		\end{itemize}
 \end{frame}
 
 \section{Odborné pojmy}
-\begin{frame}{Nadpis}{Podnapis}
+\begin{frame}{Specifikace problematiky}
+		\begin{itemize}
+		\item[•] Kolaborativní filtrování
+		\item[•] User-based k-NN
+		\item[•] Kosinova podobnost
+		\item[•] Locality-sensitive hashing
+		\end{itemize}
+\end{frame}
+
+\section{Aktuální stav problematiky}
+\begin{frame}{Aktuální stav problematiky}
+		\begin{itemize}
+		\item[•] Odlišné metody LSH pro různé metriky podobnosti
+		\item[•] Multi-probe
+		\item[•] Popularita položek
+		\item[•] Omezené testování 
+		\end{itemize}
+\end{frame}
+
+\section{Návrh systému}
+\begin{frame}{Návrh}
 		něco
 \end{frame}
 
-\section{Motivace}
-
-\begin{frame}{Nadpis}{Podnapis}
+\section{Implementace}
+\begin{frame}{Realizace}
 		něco
 \end{frame}
 
-\section{Motivace}
+\section{Datové sady}
 
-\begin{frame}{Nadpis}{Podnapis}
+\begin{frame}{Datové sady}
 		něco
 \end{frame}
 
-\section{Motivace}
+\section{Princip testování}
 
-\begin{frame}{Nadpis}{Podnapis}
+\begin{frame}{Princip testování}
 		něco
 \end{frame}
 
-\section{Motivace}
+\section{Výsledky testování}
 
-\begin{frame}{Nadpis}{Podnapis}
-		něco
+\begin{frame}{Výsledky testování}
+		něco\cite{handbook}
 \end{frame}
 
-\section{Motivace}
+\section{Závěr}
 
-\begin{frame}{Nadpis}{Podnapis}
-		něco
-\end{frame}
-
-\section{Motivace}
-
-\begin{frame}{Nadpis}{Podnapis}
-		něco
+\begin{frame}{Závěr}
+		něco\cite{handbook}
 \end{frame}
 
 \section{Použitá literatura}
 
 \begin{frame}{Použité literární zdroje}
-		něco
+		\begin{thebibliography}{9}
+\small
+
+\bibitem{handbook}
+  \color{black}RICCI, F.; ROKACH, L.; SHAPIRA, B.; aj.: \textit{Recommender systems handbook.} Springer New York Dordrecht Heidelberg London, 2011, ISBN 978-0-387-85819-7.
+  
+  \bibitem{collaborative}
+  \color{black}XUE, G.-R.; LIN, C.; YANG, Q.; aj.: Scalable collaborative filtering using cluster-based smoothing. [online], August 15 - 19, 2005, [cit. 2018-03-08]. Dostupné z: \url{https://dl.acm.org/citation.cfm?id=1076056}
+  
+  \bibitem{survey}
+  \color{black}WANG, J.; SHEN, H. T.; SONG, J.; aj.: Hashing for Similarity Search: A Survey. [online], Submitted on 13 Aug 2014, [cit. 2018-03-11], 1408.2927. Dostupné z: \url{http://arxiv.org/abs/1408.2927}
+  
+  \bibitem{multiprobe}
+  \color{black}LV, Q.; JOSEPHSON, W.; WANG, Z.; aj.: Multi-probe LSH: efficient indexing for high-
+dimensional similarity search. [online], September 23 - 27, 2007, [cit. 2018-03-17]. Dostupné z: \url{http://dl.acm.org/citation.cfm?id=1325851.1325958}
+
+  \bibitem{popularity}
+  \color{black}STECK, H.: Item Popularity and Recommendation Accuracy. [online], October 23 - 27, 2011, [cit. 2018-03-19]. Dostupné z: \url{doi:10.1145/2043932.2043957}
+
+\end{thebibliography}
+		
 \end{frame}
 
 \section{Poděkování}
