@@ -39,15 +39,6 @@
 \titlepage
 \end{frame}
 
-\section{Motivace}
-\begin{frame}{Motivace}
-		\begin{itemize}
-		\item[•] Osobní zájem v oblasti doporučovacích systémů
-		\item[•] Narůstajícího množství dat
-		\item[•] Osobní přínos
-		\end{itemize}
-\end{frame}
-
 \section{Cíle BP}
 \begin{frame}{Cíle Bakalářské práce}
        \begin{itemize}
@@ -59,58 +50,110 @@
 		\end{itemize}
 \end{frame}
 
+\section{Motivace}
+\begin{frame}{Motivace}
+		\begin{itemize}
+		\item[•] Osobní zájem v oblasti doporučovacích systémů
+		\item[•] Narůstajícího množství dat
+		\item[•] Osobní přínos
+		\end{itemize}
+\end{frame}
+
 \section{Odborné pojmy}
 \begin{frame}{Specifikace problematiky}
 		\begin{itemize}
 		\item[•] Kolaborativní filtrování
 		\item[•] User-based k-NN
 		\item[•] Kosinova podobnost
-		\item[•] Locality-sensitive hashing
+		\item[•] Lokálně senzitivní hashování
 		\end{itemize}
 \end{frame}
 
-\section{Aktuální stav problematiky}
-\begin{frame}{Aktuální stav problematiky}
-		\begin{itemize}
-		\item[•] Odlišné metody LSH pro různé metriky podobnosti
-		\item[•] Multi-probe
-		\item[•] Popularita položek
-		\item[•] Omezené testování 
-		\end{itemize}
-\end{frame}
+
 
 \section{Návrh systému}
 \begin{frame}{Návrh}
-		něco
+\begin{columns}[c]
+    \column{7cm}
+      \begin{itemize}
+		\item[•] Předzpracování
+		\item[•] Modul k-NN
+		\item[•] Modul LSH
+		\item[•] Testování přesnosti k-NN a úspěšnosti doporučování 
+		\end{itemize}
+    \column{8cm}
+      \center\includegraphics[width=7cm]{img/schemaBP}
+  \end{columns}
+		
+\end{frame}
+
+\section{Metody LSH a hashovací funkce}
+\begin{frame}{Metody LSH a hashovací funkce}
+		\begin{itemize}
+		\item[•] Projekční matice
+		\item[•] Počet hashovacích funkcí
+		\item[•] Multi-probe
+		\item[•] Popularita položek  
+		\end{itemize}
 \end{frame}
 
 \section{Implementace}
 \begin{frame}{Realizace}
-		něco
-\end{frame}
-
-\section{Datové sady}
-
-\begin{frame}{Datové sady}
-		něco
+		\begin{itemize}
+		\item[•] Python
+		\item[•] Modul pro tvorbu grafů
+		\item[•] Argumenty
+		       \begin{description}
+		       \item[\textbf{-d}] Dimenze hashovací funkce
+		       \item[\textbf{-c}] Nastavení metody multi-probe
+		       \item[\textbf{-m}] Hashovací funkce
+		       \item[\textbf{-M}] Standartní hashovací funkce
+		       \end{description}
+		\end{itemize}
 \end{frame}
 
 \section{Princip testování}
-
 \begin{frame}{Princip testování}
-		něco
+		\begin{itemize}
+		\item[•] Testování na přesnost 10-NN
+		\item[•] Úspěšnost doporučování na vybraných modelech 
+		\item[•] Databáze A
+		       \begin{description}
+		       \item[\textbf{záznamu uživatel-položka:}] 1 280 189
+		       \item[\textbf{uživatelů:}] 290 625
+		       \item[\textbf{položek:}] 11 101
+		       \end{description}
+		\item[•] Databáze B
+		       \begin{description}
+		       \item[\textbf{záznamu uživatel-položka:}] 54 234 951
+		       \item[\textbf{uživatelů:}] 1 028 287
+		       \item[\textbf{položek:}] 52 689
+		       \end{description}
+		\end{itemize}
 \end{frame}
 
 \section{Výsledky testování}
-
 \begin{frame}{Výsledky testování}
-		něco\cite{handbook}
+\begin{columns}[c]
+    \column{7cm}
+      \begin{itemize}
+		\item[•] Přesnost 10-NN
+		\item[•] Úspěšnost doporučování (recall a~catalog coverage)
+		\item[•] Závislost přesnosti 10-NN a hodnoty recall
+		\end{itemize}
+    \column{8cm}
+      \center\center\includegraphics[width=8cm]{img/modKNNopt}
+  \end{columns}
+		
 \end{frame}
 
 \section{Závěr}
-
 \begin{frame}{Závěr}
-		něco\cite{handbook}
+		\begin{itemize}
+		\item[•] Dosažené výsledky
+		\item[•] Nastavení modelů
+		\item[•] Budoucí práce
+		\end{itemize}
 \end{frame}
 
 \section{Použitá literatura}
