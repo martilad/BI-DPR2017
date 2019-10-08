@@ -1,4 +1,7 @@
 # BI-DPR - podmínky udělení zápočtu
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 Předmět BI-DPR Dokumentace, prezentace a rétorika je zakončen klasifikovaným zápočtem. Podmínky udělení klasifikovaného zápočtu jsou následující:
 
 * **Zpracování a odevzdání zápočtového projektu -** poziční zpráva o bakalářské práci (maximálně 30 bodů)
@@ -60,3 +63,7 @@ Předmět BI-DPR Dokumentace, prezentace a rétorika je zakončen klasifikovaný
 | rozpracovatnost teoretické části práce | nakolik má student rozpracovanou teoretickou (rešeršní, analytickou) část BP (typicky to mohou být přípravné a rešeršní práce, průzkum existujících řešení, prozkoumání teoretického zázemí, provedení potřebné analýzy, apod.) |    0 - 4 
 | rozpracovanost praktické části práce | nakolik má student rozpracovanou praktickou část BP (typicky to může být vlastní návrh řešení, jeho implementace a otestování, zhodnocení výsledků, porovnání s již existujícími řešením, zdokumentování, apod.) |    0 - 4 
 
+
+## License
+
+This project is licensed under the **GNU GPLv3**.
